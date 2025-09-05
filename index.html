@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — Portfolio</title>
-  <meta name="description" content="Personal portfolio. Projects, experience, and ways to get in touch." />
-  <meta property="og:title" content="Your Name — Portfolio" />
-  <meta property="og:description" content="Projects, experience, and ways to get in touch." />
+  <title>Khushi Piparava — Portfolio</title>
+  <meta name="description" content="Projects, experience, publications, and ways to get in touch." />
+  <meta property="og:title" content="Khushi Piparava — Portfolio" />
+  <meta property="og:description" content="Aerospace engineering student. Projects, experience, and publications." />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0ea5e9" />
+  <meta name="theme-color" content="#9d4edd" />
   <style>
     /* -------- Base + Theme -------- */
     :root {
@@ -61,9 +61,7 @@
     .actions {display:flex; gap:12px; margin-top:22px}
     .btn {display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius: 12px; border:1px solid color-mix(in oklab, var(--text) 16%, transparent); background: var(--panel); color:var(--text); box-shadow: var(--shadow)}
     .btn.primary {border-color: transparent; background: linear-gradient(135deg, var(--accent), color-mix(in oklab, var(--accent) 60%, white)); color:#00131b}
-    .btn:hover {
-        box-shadow: 0 0 12px var(--accent);
-        }
+    .btn:hover { box-shadow: 0 0 12px var(--accent) }
     .card {background: var(--panel); border:1px solid color-mix(in oklab, var(--text) 12%, transparent); border-radius: var(--radius); box-shadow: var(--shadow)}
 
     /* -------- Sections -------- */
@@ -76,8 +74,8 @@
 
     /* -------- Projects -------- */
     .project {display:flex; flex-direction:column; overflow:hidden}
-    .project .thumb {aspect-ratio: 16/9; background: linear-gradient(135deg, #38bdf8, #22d3ee); position:relative}
-    .project .thumb::after {content:""; position:absolute; inset:0; background: radial-gradient(400px 160px at 60% 20%, rgba(255,255,255,.24), transparent 40%)}
+    .project .thumb {aspect-ratio: 16/9; background: linear-gradient(135deg, #7b2cbf, #9d4edd, #c77dff); position:relative}
+    .project .thumb::after {content:""; position:absolute; inset:0; background: radial-gradient(400px 160px at 60% 20%, rgba(255,255,255,.32), transparent 40%)}
     .project .body {padding:14px}
     .tags {display:flex; flex-wrap:wrap; gap:6px; margin:10px 0}
     .tag {font: 12px/1 var(--mono); border:1px solid color-mix(in oklab, var(--text) 18%, transparent); color:var(--muted); padding:4px 6px; border-radius:8px}
@@ -95,10 +93,16 @@
     .skills {display:flex; flex-wrap:wrap; gap:10px}
     .skill {padding:10px 12px; border-radius: 999px; background: var(--panel); border:1px solid color-mix(in oklab, var(--text) 12%, transparent)}
 
-    /* -------- Contact -------- */
-    .contact {display:grid; grid-template-columns: 1.1fr .9fr; gap: 16px}
-    .contact .card {padding:18px}
-    .social {display:flex; gap:10px; margin-top:8px}
+    /* -------- Modal -------- */
+    .modal {position: fixed; inset: 0; background: rgba(0,0,0,.6); display:none; align-items: center; justify-content: center; padding: 20px; z-index: 50}
+    .modal.active {display:flex}
+    .modal .content {max-width: 920px; width:100%; background: var(--panel); border:1px solid color-mix(in oklab, var(--text) 14%, transparent); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden}
+    .modal header {display:flex; align-items:center; justify-content:space-between; padding: 16px 18px; border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent)}
+    .modal .body {padding: 16px 18px}
+    .close {border:none; background:transparent; color:var(--muted); font-size:22px; cursor:pointer}
+    .gallery {display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; margin-top:10px}
+    .ph {background: linear-gradient(135deg, #3b1d5a, #5a189a); aspect-ratio: 16/9; border-radius: 12px; position:relative}
+    .ph::after {content: "Add image here"; position:absolute; inset:0; display:grid; place-items:center; color:#ddd; font-size:14px; letter-spacing:.05em}
 
     /* -------- Footer -------- */
     footer {padding:28px 0; color:var(--muted); font-size:14px}
@@ -112,6 +116,7 @@
       .hero .grid, .contact {grid-template-columns: 1fr}
       .grid-3 {grid-template-columns: 1fr}
       .grid-2 {grid-template-columns: 1fr}
+      .gallery {grid-template-columns: 1fr 1fr}
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -123,12 +128,14 @@
   <a class="sr-only" href="#main">Skip to content</a>
   <header class="nav">
     <div class="container inner">
-      <a class="brand" href="#top">Your Name</a>
+      <a class="brand" href="#top">Khushi Piparava</a>
       <nav aria-label="Primary">
         <ul>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#experience">Experience</a></li>
+          <li><a href="#publications">Publications</a></li>
           <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -141,9 +148,9 @@
     <section class="hero" id="top">
       <div class="grid">
         <div>
-          <span class="pill">Open to opportunities</span>
-          <h1 class="h1">Hi, I am <span style="color:var(--accent)">Your Name</span>. I build clean and scalable apps.</h1>
-          <p class="lead">Full‑stack developer focused on delightful UX, performance, and DX. I like TypeScript, React, Node, and clean APIs.</p>
+          <span class="pill">Aerospace Engineering @ UTA</span>
+          <h1 class="h1">Hi, I am <span style="color:var(--accent)">Khushi Piparava</span>.</h1>
+          <p class="lead">Researching RDE aerospike nozzles and building simulation and test tooling. Interested in CFD, ML for fluids, and space systems.</p>
           <div class="actions">
             <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">View Resume</a>
             <a class="btn" href="#contact">Get in touch</a>
@@ -155,19 +162,19 @@
           <div class="grid-2">
             <div>
               <div class="muted" style="font-size:12px">Location</div>
-              <div>City, Country</div>
+              <div>Arlington, TX</div>
             </div>
             <div>
               <div class="muted" style="font-size:12px">Email</div>
-              <div><a href="mailto:you@example.com">you@example.com</a></div>
+              <div><a href="mailto:krp3505@mavs.uta.edu">krp3505@mavs.uta.edu</a></div>
             </div>
             <div>
               <div class="muted" style="font-size:12px">GitHub</div>
-              <div><a href="https://github.com/yourhandle">@yourhandle</a></div>
+              <div><a href="https://github.com/Khushi-1010">@Khushi-1010</a></div>
             </div>
             <div>
               <div class="muted" style="font-size:12px">LinkedIn</div>
-              <div><a href="https://www.linkedin.com/in/yourhandle/">/yourhandle</a></div>
+              <div><a href="https://www.linkedin.com/in/khushi-piparava/">/khushi-piparava</a></div>
             </div>
           </div>
         </div>
@@ -181,57 +188,48 @@
           <div class="eyebrow">Selected work</div>
           <h2>Projects</h2>
         </div>
-        <a href="https://github.com/yourhandle?tab=repositories">All repos →</a>
+        <a href="#" class="muted" aria-disabled="true">All repos →</a>
       </div>
       <div class="grid-3" id="projectGrid">
-        <!-- Project Card 1 -->
+        <!-- SBJ -->
         <article class="project card">
-          <div class="thumb" role="img" aria-label="Screenshot placeholder"></div>
+          <div class="thumb" role="img" aria-label="Supersonic Business Jet"></div>
           <div class="body">
-            <h3>Project One</h3>
-            <p class="muted">Short one‑liner about the problem and the outcome.</p>
+            <h3>Conceptual Design of Supersonic Business Jet</h3>
+            <p class="muted">Aerodynamics & aerothermodynamics lead for a Mach 1.7 SBJ concept.</p>
             <div class="tags">
-              <span class="tag">TypeScript</span>
-              <span class="tag">React</span>
-              <span class="tag">Vite</span>
+              <span class="tag">MATLAB</span><span class="tag">OpenVSP</span><span class="tag">Digital DATCOM</span>
             </div>
             <div class="links">
-              <a class="btn" href="https://github.com/yourhandle/project-one">GitHub</a>
-              <a class="btn" href="https://yourdemo1.example.com">Live</a>
+              <button class="btn" data-modal-target="#modal-sbj">Details</button>
             </div>
           </div>
         </article>
-        <!-- Project Card 2 -->
+        <!-- Starship -->
         <article class="project card">
-          <div class="thumb" role="img" aria-label="Screenshot placeholder"></div>
+          <div class="thumb" role="img" aria-label="Martian Starship"></div>
           <div class="body">
-            <h3>Project Two</h3>
-            <p class="muted">Describe the core value and what you learned.</p>
+            <h3>Reverse Engineering SpaceX Martian Starship</h3>
+            <p class="muted">L/D 4–5 on Mars, >8 on Earth reentry with control margin analyses.</p>
             <div class="tags">
-              <span class="tag">Node</span>
-              <span class="tag">Express</span>
-              <span class="tag">PostgreSQL</span>
+              <span class="tag">Aero</span><span class="tag">Controls</span><span class="tag">Thermal</span>
             </div>
             <div class="links">
-              <a class="btn" href="https://github.com/yourhandle/project-two">GitHub</a>
-              <a class="btn" href="https://yourdemo2.example.com">Live</a>
+              <button class="btn" data-modal-target="#modal-starship">Details</button>
             </div>
           </div>
         </article>
-        <!-- Project Card 3 -->
+        <!-- A‑MOD -->
         <article class="project card">
-          <div class="thumb" role="img" aria-label="Screenshot placeholder"></div>
+          <div class="thumb" role="img" aria-label="A‑MOD Racecar Aero"></div>
           <div class="body">
-            <h3>Project Three</h3>
-            <p class="muted">Highlight the impact. Numbers help.</p>
+            <h3>A‑MOD Aerodynamics Analysis</h3>
+            <p class="muted">+12% downforce and −7% drag via STAR‑CCM+ sweeps.</p>
             <div class="tags">
-              <span class="tag">Next.js</span>
-              <span class="tag">Tailwind</span>
-              <span class="tag">Stripe</span>
+              <span class="tag">STAR‑CCM+</span><span class="tag">SolidWorks</span><span class="tag">RANS</span>
             </div>
             <div class="links">
-              <a class="btn" href="https://github.com/yourhandle/project-three">GitHub</a>
-              <a class="btn" href="https://yourdemo3.example.com">Live</a>
+              <button class="btn" data-modal-target="#modal-amod">Details</button>
             </div>
           </div>
         </article>
@@ -248,22 +246,60 @@
       </div>
       <div class="timeline">
         <article class="job card" style="padding:14px">
-          <h3>Software Engineer · Company</h3>
-          <div class="meta">Jan 2023 – Present · City</div>
+          <h3>Undergraduate Research Assistant · Aerodynamics Research Center</h3>
+          <div class="meta">Aug 2023 – Present · Arlington, TX</div>
           <ul>
-            <li>Built feature X that reduced load time by 40%.</li>
-            <li>Led migration to TypeScript across 6 services.</li>
-            <li>Mentored 3 junior developers.</li>
+            <li>NASA M‑STAR RDE research on aerospike nozzles using Fluent, ML, POD/DMD.</li>
+            <li>Reduced reconstruction error below 1% by extracting dominant flow modes.</li>
+            <li>Applied PCA and modal analysis to transient flowfields for optimization.</li>
           </ul>
         </article>
         <article class="job card" style="padding:14px">
-          <h3>Developer · Previous Co</h3>
-          <div class="meta">Jun 2021 – Dec 2022 · City</div>
+          <h3>Software Testing Intern · ANSYS, Inc.</h3>
+          <div class="meta">Aug 2024 – May 2025 · Austin, TX</div>
           <ul>
-            <li>Designed a CI pipeline with 12 minute average build time.</li>
-            <li>Launched an internal component library.</li>
+            <li>Led QA during ACIS → Parasolid migration with 50+ automated tests.</li>
+            <li>Resolved 30+ critical defects and improved modeling stability.</li>
+            <li>Expanded Stride Python test coverage across major CAD integrations.</li>
           </ul>
         </article>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Research</div>
+          <h2>Publications</h2>
+        </div>
+      </div>
+      <div class="card" style="padding:14px">
+        <ul>
+          <li>Computational Modeling and Dynamic Analysis of Transient Flowfields in Aerospike Nozzles — AIAA 2025‑97997. <a href="https://doi.org/10.2514/6.2025-97997">DOI</a></li>
+          <li>Design of Aerospike Nozzles for Rotating Detonation Engines using CFD and ML — AIAA 2024‑85937. <a href="https://doi.org/10.2514/6.2024-85937">DOI</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Background</div>
+          <h2>Education & Awards</h2>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card" style="padding:14px">
+          <h3>University of Texas at Arlington</h3>
+          <div class="meta">Honors B.S. Aerospace Engineering, Minor in Mechanical · GPA 3.4/4.0 · Aug 2021 – Dec 2025</div>
+          <p class="muted">Organizations: AIAA, Honors College Council, SASE. Certification: Machine Learning Specialization (Stanford & DeepLearning.AI).</p>
+        </div>
+        <div class="card" style="padding:14px">
+          <h3>Awards</h3>
+          <p class="muted">Outstanding Second Year Leader, inSTEM Scholar, Maverick Academic Scholar, Outstanding AIAA Student Award, Freshman Honor Roll.</p>
+        </div>
       </div>
     </section>
 
@@ -276,16 +312,21 @@
         </div>
       </div>
       <div class="skills">
-        <span class="skill">TypeScript</span>
-        <span class="skill">React</span>
-        <span class="skill">Next.js</span>
-        <span class="skill">Node</span>
-        <span class="skill">Express</span>
-        <span class="skill">PostgreSQL</span>
-        <span class="skill">Prisma</span>
-        <span class="skill">Tailwind</span>
-        <span class="skill">Docker</span>
-        <span class="skill">AWS</span>
+        <span class="skill">MATLAB</span>
+        <span class="skill">Python</span>
+        <span class="skill">C</span>
+        <span class="skill">SQL</span>
+        <span class="skill">HTML/CSS</span>
+        <span class="skill">ANSYS Fluent</span>
+        <span class="skill">SpaceClaim</span>
+        <span class="skill">STAR‑CCM+</span>
+        <span class="skill">SolidWorks</span>
+        <span class="skill">Siemens NX</span>
+        <span class="skill">Digital DATCOM</span>
+        <span class="skill">OpenVSP</span>
+        <span class="skill">LaTeX</span>
+        <span class="skill">Azure DevOps</span>
+        <span class="skill">Team Leadership</span>
       </div>
     </section>
 
@@ -293,12 +334,11 @@
     <section id="contact" class="contact">
       <div class="card">
         <h2 style="margin-top:0">Contact</h2>
-        <p class="muted">Want to collaborate or hire me. Send a note.</p>
-        <p><a class="btn primary" href="mailto:you@example.com">Email me</a></p>
+        <p class="muted">Want to collaborate or chat about aerospace. Send a note.</p>
+        <p><a class="btn primary" href="mailto:krp3505@mavs.uta.edu">Email me</a></p>
         <div class="social" aria-label="Social links">
-          <a class="btn" href="https://github.com/yourhandle" aria-label="GitHub">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/yourhandle/" aria-label="LinkedIn">LinkedIn</a>
-          <a class="btn" href="https://twitter.com/yourhandle" aria-label="X">X</a>
+          <a class="btn" href="https://github.com/Khushi-1010" aria-label="GitHub">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/khushi-piparava/" aria-label="LinkedIn">LinkedIn</a>
         </div>
       </div>
       <div class="card">
@@ -315,17 +355,62 @@
 
   <footer>
     <div class="container" style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap">
-      <div>© <span id="year"></span> Your Name</div>
+      <div>© <span id="year"></span> Khushi Piparava</div>
       <div class="muted">Built with plain HTML, CSS, and JS</div>
     </div>
   </footer>
+
+  <!-- Project Modals -->
+  <div class="modal" id="modal-sbj" role="dialog" aria-modal="true" aria-labelledby="sbj-title">
+    <div class="content">
+      <header>
+        <h3 id="sbj-title">Supersonic Business Jet — Project Details</h3>
+        <button class="close" data-close>×</button>
+      </header>
+      <div class="body">
+        <p>Led aerodynamics and aerothermodynamics for a Mach 1.7, 14‑passenger SBJ. Built lift–drag datasets using MATLAB with Digital DATCOM and OpenVSP. Subsonic L/D ≈ 12, supersonic L/D ≈ 7.5. Honors capstone explored folding‑wingtip variable geometry and provided a multidisciplinary decision framework.</p>
+        <div class="gallery">
+          <div class="ph"></div><div class="ph"></div><div class="ph"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-starship" role="dialog" aria-modal="true" aria-labelledby="starship-title">
+    <div class="content">
+      <header>
+        <h3 id="starship-title">Reverse Engineering SpaceX Martian Starship — Project Details</h3>
+        <button class="close" data-close>×</button>
+      </header>
+      <div class="body">
+        <p>Led aero and S&C on a Martian Starship redesign. Achieved L/D ~4–5 for Mars entry and >8 for Earth reentry. Confirmed control ratio >1.5 and ~10–12% static margin. Proposed heat‑shield, fin and strake updates to improve stability and payload.</p>
+        <div class="gallery">
+          <div class="ph"></div><div class="ph"></div><div class="ph"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-amod" role="dialog" aria-modal="true" aria-labelledby="amod-title">
+    <div class="content">
+      <header>
+        <h3 id="amod-title">A‑MOD Aerodynamics Analysis — Project Details</h3>
+        <button class="close" data-close>×</button>
+      </header>
+      <div class="body">
+        <p>Optimized UTA Racing A‑modified car aero. 3,000 STAR‑CCM+ RANS iterations across ride‑height and wing‑angle sweeps delivered +12% downforce and −7% drag, improving balance and moving CP by ~5%.</p>
+        <div class="gallery">
+          <div class="ph"></div><div class="ph"></div><div class="ph"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Theme persistence
-    const root = document.documentElement;
     const toggle = document.getElementById('themeToggle');
     const saved = localStorage.getItem('theme');
     if (saved === 'light') document.body.classList.add('light');
@@ -350,6 +435,15 @@
       }
     }, {threshold: 0.12});
     document.querySelectorAll('section, .project').forEach(el => reveal.observe(el));
+
+    // Modal logic
+    function openModal(id){ document.querySelector(id).classList.add('active'); document.body.style.overflow='hidden' }
+    function closeModal(el){ el.closest('.modal').classList.remove('active'); document.body.style.overflow='' }
+    document.querySelectorAll('[data-modal-target]').forEach(btn=>{
+      btn.addEventListener('click', ()=> openModal(btn.dataset.modalTarget))
+    })
+    document.querySelectorAll('[data-close]').forEach(btn=> btn.addEventListener('click', ()=> closeModal(btn)))
+    document.querySelectorAll('.modal').forEach(m=> m.addEventListener('click', (e)=>{ if(e.target===m) { m.classList.remove('active'); document.body.style.overflow=''} }))
   </script>
 </body>
 </html>
