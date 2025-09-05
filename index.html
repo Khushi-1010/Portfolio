@@ -13,11 +13,11 @@
     /* -------- Base + Theme -------- */
     :root {
       --bg: #0b1220;
-      --panel: #0f172a;
+      --panel: rgba(15, 23, 42, 0.8);
       --text: #e5e7eb;
       --muted: #94a3b8;
-      --accent: #0ea5e9;
-      --ring: #38bdf8;
+      --accent: #9d4edd; /* deep purple */
+      --ring: #c77dff;
       --shadow: 0 10px 30px rgba(2, 6, 23, 0.5);
       --radius: 16px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -33,7 +33,13 @@
       --shadow: 0 10px 25px rgba(2, 6, 23, 0.08);
     }
     html {scroll-behavior: smooth}
-    body {margin:0; font-family: var(--sans); color: var(--text); background: radial-gradient(1200px 600px at 70% -20%, rgba(56,189,248,.15), transparent 60%), var(--bg);} 
+    body {
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background: #000 url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+    }
+
     img {max-width:100%; display:block}
     a {color: var(--accent); text-decoration: none}
     .container {max-width: 1100px; margin: 0 auto; padding: 0 20px}
@@ -55,7 +61,9 @@
     .actions {display:flex; gap:12px; margin-top:22px}
     .btn {display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius: 12px; border:1px solid color-mix(in oklab, var(--text) 16%, transparent); background: var(--panel); color:var(--text); box-shadow: var(--shadow)}
     .btn.primary {border-color: transparent; background: linear-gradient(135deg, var(--accent), color-mix(in oklab, var(--accent) 60%, white)); color:#00131b}
-
+    .btn:hover {
+        box-shadow: 0 0 12px var(--accent);
+        }
     .card {background: var(--panel); border:1px solid color-mix(in oklab, var(--text) 12%, transparent); border-radius: var(--radius); box-shadow: var(--shadow)}
 
     /* -------- Sections -------- */
