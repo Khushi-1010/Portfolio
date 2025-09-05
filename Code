@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Personal portfolio. Projects, experience, and ways to get in touch." />
+  <meta property="og:title" content="Your Name — Portfolio" />
+  <meta property="og:description" content="Projects, experience, and ways to get in touch." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <style>
+    /* -------- Base + Theme -------- */
+    :root {
+      --bg: #0b1220;
+      --panel: #0f172a;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #0ea5e9;
+      --ring: #38bdf8;
+      --shadow: 0 10px 30px rgba(2, 6, 23, 0.5);
+      --radius: 16px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    .light {
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #0ea5e9;
+      --ring: #0284c7;
+      --shadow: 0 10px 25px rgba(2, 6, 23, 0.08);
+    }
+    html {scroll-behavior: smooth}
+    body {margin:0; font-family: var(--sans); color: var(--text); background: radial-gradient(1200px 600px at 70% -20%, rgba(56,189,248,.15), transparent 60%), var(--bg);} 
+    img {max-width:100%; display:block}
+    a {color: var(--accent); text-decoration: none}
+    .container {max-width: 1100px; margin: 0 auto; padding: 0 20px}
+
+    /* -------- Top Nav -------- */
+    .nav {position: sticky; top: 0; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--bg) 85%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--text) 10%, transparent); z-index: 10}
+    .nav .inner {display:flex; align-items:center; justify-content:space-between; height:64px}
+    .nav a.brand {font-weight:700; letter-spacing:.2px; color:var(--text)}
+    .nav ul {display:flex; gap:18px; list-style:none; margin:0; padding:0}
+    .nav ul a {color:var(--muted)}
+    .nav .toggle {border:1px solid color-mix(in oklab, var(--text) 16%, transparent); background: var(--panel); color:var(--text); border-radius: 999px; padding:8px 12px; cursor:pointer}
+
+    /* -------- Hero -------- */
+    .hero {padding: 80px 0 40px}
+    .hero .grid {display:grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: center}
+    .pill {display:inline-flex; align-items:center; gap:8px; border:1px solid color-mix(in oklab, var(--text) 16%, transparent); border-radius:999px; padding:6px 10px; font-size:12px; color:var(--muted)}
+    .h1 {font-size: clamp(36px, 5vw, 56px); line-height:1.05; margin:10px 0 12px}
+    .lead {color:var(--muted); font-size: 18px}
+    .actions {display:flex; gap:12px; margin-top:22px}
+    .btn {display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius: 12px; border:1px solid color-mix(in oklab, var(--text) 16%, transparent); background: var(--panel); color:var(--text); box-shadow: var(--shadow)}
+    .btn.primary {border-color: transparent; background: linear-gradient(135deg, var(--accent), color-mix(in oklab, var(--accent) 60%, white)); color:#00131b}
+
+    .card {background: var(--panel); border:1px solid color-mix(in oklab, var(--text) 12%, transparent); border-radius: var(--radius); box-shadow: var(--shadow)}
+
+    /* -------- Sections -------- */
+    section {padding:64px 0}
+    .section-head {display:flex; align-items:end; justify-content:space-between; margin-bottom:16px}
+    .eyebrow {text-transform: uppercase; letter-spacing: .16em; font-size: 12px; color: var(--muted)}
+    h2 {font-size:28px; margin:6px 0 4px}
+    .grid-3 {display:grid; grid-template-columns: repeat(3, 1fr); gap:16px}
+    .grid-2 {display:grid; grid-template-columns: repeat(2, 1fr); gap:16px}
+
+    /* -------- Projects -------- */
+    .project {display:flex; flex-direction:column; overflow:hidden}
+    .project .thumb {aspect-ratio: 16/9; background: linear-gradient(135deg, #38bdf8, #22d3ee); position:relative}
+    .project .thumb::after {content:""; position:absolute; inset:0; background: radial-gradient(400px 160px at 60% 20%, rgba(255,255,255,.24), transparent 40%)}
+    .project .body {padding:14px}
+    .tags {display:flex; flex-wrap:wrap; gap:6px; margin:10px 0}
+    .tag {font: 12px/1 var(--mono); border:1px solid color-mix(in oklab, var(--text) 18%, transparent); color:var(--muted); padding:4px 6px; border-radius:8px}
+    .project .links {display:flex; gap:8px; margin-top:8px}
+
+    /* -------- Experience -------- */
+    .timeline {position:relative; padding-left:22px}
+    .timeline::before {content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background: color-mix(in oklab, var(--text) 16%, transparent)}
+    .job {position:relative; margin-bottom:18px}
+    .job::before {content:""; position:absolute; left:-14px; top:6px; width:8px; height:8px; border-radius:999px; background: var(--accent); box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 40%, transparent)}
+    .job h3 {margin:0; font-size:18px}
+    .job .meta {color:var(--muted); font-size:14px}
+
+    /* -------- Skills -------- */
+    .skills {display:flex; flex-wrap:wrap; gap:10px}
+    .skill {padding:10px 12px; border-radius: 999px; background: var(--panel); border:1px solid color-mix(in oklab, var(--text) 12%, transparent)}
+
+    /* -------- Contact -------- */
+    .contact {display:grid; grid-template-columns: 1.1fr .9fr; gap: 16px}
+    .contact .card {padding:18px}
+    .social {display:flex; gap:10px; margin-top:8px}
+
+    /* -------- Footer -------- */
+    footer {padding:28px 0; color:var(--muted); font-size:14px}
+
+    /* -------- Utilities -------- */
+    .muted {color:var(--muted)}
+    .sr-only {position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
+    .hide {display:none}
+
+    @media (max-width: 900px) {
+      .hero .grid, .contact {grid-template-columns: 1fr}
+      .grid-3 {grid-template-columns: 1fr}
+      .grid-2 {grid-template-columns: 1fr}
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {scroll-behavior: auto}
+    }
+  </style>
+</head>
+<body>
+  <a class="sr-only" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="container inner">
+      <a class="brand" href="#top">Your Name</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="themeToggle" class="toggle" aria-label="Toggle theme">☀︎</button>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="grid">
+        <div>
+          <span class="pill">Open to opportunities</span>
+          <h1 class="h1">Hi, I am <span style="color:var(--accent)">Your Name</span>. I build clean and scalable apps.</h1>
+          <p class="lead">Full‑stack developer focused on delightful UX, performance, and DX. I like TypeScript, React, Node, and clean APIs.</p>
+          <div class="actions">
+            <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">View Resume</a>
+            <a class="btn" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <div class="card" style="padding:18px">
+          <h3 style="margin:0 0 6px">At a glance</h3>
+          <p class="muted" style="margin:0 0 10px">Quick stats and links</p>
+          <div class="grid-2">
+            <div>
+              <div class="muted" style="font-size:12px">Location</div>
+              <div>City, Country</div>
+            </div>
+            <div>
+              <div class="muted" style="font-size:12px">Email</div>
+              <div><a href="mailto:you@example.com">you@example.com</a></div>
+            </div>
+            <div>
+              <div class="muted" style="font-size:12px">GitHub</div>
+              <div><a href="https://github.com/yourhandle">@yourhandle</a></div>
+            </div>
+            <div>
+              <div class="muted" style="font-size:12px">LinkedIn</div>
+              <div><a href="https://www.linkedin.com/in/yourhandle/">/yourhandle</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Selected work</div>
+          <h2>Projects</h2>
+        </div>
+        <a href="https://github.com/yourhandle?tab=repositories">All repos →</a>
+      </div>
+      <div class="grid-3" id="projectGrid">
+        <!-- Project Card 1 -->
+        <article class="project card">
+          <div class="thumb" role="img" aria-label="Screenshot placeholder"></div>
+          <div class="body">
+            <h3>Project One</h3>
+            <p class="muted">Short one‑liner about the problem and the outcome.</p>
+            <div class="tags">
+              <span class="tag">TypeScript</span>
+              <span class="tag">React</span>
+              <span class="tag">Vite</span>
+            </div>
+            <div class="links">
+              <a class="btn" href="https://github.com/yourhandle/project-one">GitHub</a>
+              <a class="btn" href="https://yourdemo1.example.com">Live</a>
+            </div>
+          </div>
+        </article>
+        <!-- Project Card 2 -->
+        <article class="project card">
+          <div class="thumb" role="img" aria-label="Screenshot placeholder"></div>
+          <div class="body">
+            <h3>Project Two</h3>
+            <p class="muted">Describe the core value and what you learned.</p>
+            <div class="tags">
+              <span class="tag">Node</span>
+              <span class="tag">Express</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+            <div class="links">
+              <a class="btn" href="https://github.com/yourhandle/project-two">GitHub</a>
+              <a class="btn" href="https://yourdemo2.example.com">Live</a>
+            </div>
+          </div>
+        </article>
+        <!-- Project Card 3 -->
+        <article class="project card">
+          <div class="thumb" role="img" aria-label="Screenshot placeholder"></div>
+          <div class="body">
+            <h3>Project Three</h3>
+            <p class="muted">Highlight the impact. Numbers help.</p>
+            <div class="tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">Tailwind</span>
+              <span class="tag">Stripe</span>
+            </div>
+            <div class="links">
+              <a class="btn" href="https://github.com/yourhandle/project-three">GitHub</a>
+              <a class="btn" href="https://yourdemo3.example.com">Live</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Career</div>
+          <h2>Experience</h2>
+        </div>
+      </div>
+      <div class="timeline">
+        <article class="job card" style="padding:14px">
+          <h3>Software Engineer · Company</h3>
+          <div class="meta">Jan 2023 – Present · City</div>
+          <ul>
+            <li>Built feature X that reduced load time by 40%.</li>
+            <li>Led migration to TypeScript across 6 services.</li>
+            <li>Mentored 3 junior developers.</li>
+          </ul>
+        </article>
+        <article class="job card" style="padding:14px">
+          <h3>Developer · Previous Co</h3>
+          <div class="meta">Jun 2021 – Dec 2022 · City</div>
+          <ul>
+            <li>Designed a CI pipeline with 12 minute average build time.</li>
+            <li>Launched an internal component library.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Toolbox</div>
+          <h2>Skills</h2>
+        </div>
+      </div>
+      <div class="skills">
+        <span class="skill">TypeScript</span>
+        <span class="skill">React</span>
+        <span class="skill">Next.js</span>
+        <span class="skill">Node</span>
+        <span class="skill">Express</span>
+        <span class="skill">PostgreSQL</span>
+        <span class="skill">Prisma</span>
+        <span class="skill">Tailwind</span>
+        <span class="skill">Docker</span>
+        <span class="skill">AWS</span>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="card">
+        <h2 style="margin-top:0">Contact</h2>
+        <p class="muted">Want to collaborate or hire me. Send a note.</p>
+        <p><a class="btn primary" href="mailto:you@example.com">Email me</a></p>
+        <div class="social" aria-label="Social links">
+          <a class="btn" href="https://github.com/yourhandle" aria-label="GitHub">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/yourhandle/" aria-label="LinkedIn">LinkedIn</a>
+          <a class="btn" href="https://twitter.com/yourhandle" aria-label="X">X</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">How I work</h3>
+        <ul>
+          <li>Product first. Code second.</li>
+          <li>Ship in small slices. Measure outcomes.</li>
+          <li>Accessibility and performance as defaults.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap">
+      <div>© <span id="year"></span> Your Name</div>
+      <div class="muted">Built with plain HTML, CSS, and JS</div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme persistence
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') document.body.classList.add('light');
+    toggle.textContent = document.body.classList.contains('light') ? '☾' : '☀︎';
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      toggle.textContent = isLight ? '☾' : '☀︎';
+    });
+
+    // Simple reveal on scroll
+    const reveal = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.animate([
+            {opacity:0, transform:'translateY(8px)'},
+            {opacity:1, transform:'translateY(0)'}
+          ], {duration:500, easing:'cubic-bezier(.22,1,.36,1)', fill:'both'});
+          reveal.unobserve(e.target);
+        }
+      }
+    }, {threshold: 0.12});
+    document.querySelectorAll('section, .project').forEach(el => reveal.observe(el));
+  </script>
+</body>
+</html>
