@@ -98,21 +98,29 @@
     .modal.active {display:flex}
     .modal .content {max-width: 960px; width:100%; max-height:90vh; background: var(--panel); border:1px solid color-mix(in oklab, var(--text) 14%, transparent); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden}
     .modal header {display:flex; align-items:center; justify-content:space-between; padding: 16px 18px; border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent)}
-    .modal .body {padding: 16px 18px; overflow-y: auto;  max-height: calc(90vh - 70px);}
+    .modal .body {padding: 16px 24px; overflow-y: auto;  max-height: calc(90vh - 70px);}
     .close {border:none; background:transparent; color:var(--muted); font-size:22px; cursor:pointer}
     .gallery {
                   display: flex;
-                  gap: 12px;
+                  gap: 16px;
+                  align-items:center;
+                  margin-top:16px;
                   overflow-x: auto;
                   scroll-snap-type: x mandatory;
                 }
                 
-                .gallery img {
+    .gallery img {
                   flex: 0 0 auto;
                   scroll-snap-align: start;
                   border-radius: 12px;
                   max-height: 240px;
+                  max-width: 45%
+                  border-radius: 12px;
               }
+    .gallery-block .text {
+                    flex: 1;
+                    min-width: 250px;
+                  }
 
     .ph {background: linear-gradient(135deg, #3b1d5a, #5a189a); aspect-ratio: 16/9; border-radius: 12px; position:relative}
     .ph::after {content: "Add image here"; position:absolute; inset:0; display:grid; place-items:center; color:#ddd; font-size:14px; letter-spacing:.05em}
@@ -414,11 +422,11 @@
             </ul>
         <h4>Methodology</h4>
               <p>The team implemented a multidisciplinary conceptual design process consisting of:</p>
-              <li>Mission & Technology Trade Matrices to identify constraints and feasible design regions.</li>
+             <ul> <li>Mission & Technology Trade Matrices to identify constraints and feasible design regions.</li>
               <li>Parametric Sizing via Hypersonic Convergence (HC) equations to iterate on weight, planform area, and Mach range (1.7–2.5).</li>
               <li>Aerodynamic database development through literature review of legacy supersonic aircraft (Concorde, Tu-144, Tu-444, Aerion AS2).</li>        
               <li>Propulsion modeling based on the F100-PW-229 turbofan, calibrated for supersonic cruise performance.</li>
-              <li>Configuration Layout integrating internal fuel/structure volumes and external aerodynamic shaping.</li>
+              <li>Configuration Layout integrating internal fuel/structure volumes and external aerodynamic shaping.</li></ul>
         <p>The iterative design converged on a configuration featuring high aerodynamic efficiency (L/D ≈ 7–8), a Mach 2.1 design point, and feasible performance across all mission phases.</p>
         <div class="gallery">
           <img src="Images/MeNPlane.JPEG" alt="3D Printed Model of the SkyBreaker SBJ" />
@@ -426,11 +434,11 @@
         </div>
         <h4>My Role</h4>h4>
             <p>As the Aerodynamics & Aerothermodynamics Lead, and a secondary in Stability & Control, I was responsible for:</p>
-            <li>Developing aerodynamic parameters (e.g., lift, drag, pitching moment coefficients) essential for the Hypersonic Convergence synthesis.</li>
+            <ul><li>Developing aerodynamic parameters (e.g., lift, drag, pitching moment coefficients) essential for the Hypersonic Convergence synthesis.</li>
             <li>Performed S&C analyses to determine static margin, control effectiveness, and neutral point location.</li>
             <li>Deriving realistic aerodynamic performance metrics for the SSBJ’s cruise and climb phases.</li>
             <li>Delivering verified L/D = 7–8 values to the Synthesis and Trajectory teams for mission performance analysis.</li>
-            <li>Collaborating with stability & control, propulsion, and configuration teams to ensure consistency in external geometry and flow integration.</li>
+            <li>Collaborating with stability & control, propulsion, and configuration teams to ensure consistency in external geometry and flow integration.</li></ul>
         <h4>Outcomes</h4>
         <p>The SkyBreaker study produced a validated conceptual design that demonstrated both technical and environmental feasibility for future supersonic business travel. The integration of your aerodynamic modeling established a robust foundation for high-speed flight efficiency, shaping the project’s final configuration and performance envelope.</p>
       <div class="gallery">
@@ -466,18 +474,22 @@
           <img src="Images/StarshipSim.JPEG" alt="OpenVSP Simulation" />
         </div>
           <h4>Results & Findings</h4>
+            <ul>
               <li>Achieved L/D ≈ 4-5 for Mars entry; >8 for Earth reentry.</li>
               <li>Stability margin ~10-12% static margin, ensuring passive stability.</li>
               <li>control ratio >1.5, verifying adequate aerodynamic authority across reentry phases.</li>
               <li>Strake and fin geometry adjustments reduced pitch oscillations and improved payload stability.</li>
               <li>Proposed a layered heat shield system with improved fin thermal isolation for reentry resilience.</li>
+            </ul>
           <h4>My Role</h4>
               <p>As lead for Aero & S&C, I coordinated geometry modifications, aerodynamic analysis, control-surface sizing, and final presentation. Collaborated with RedShift Dynamics team members responsible for structures, thermal systems, and systems integration.</p>
       <div class="gallery">
           <img src="Images/SD1_Starship_7.PNG" alt="Render of Final Design" />
       </div>
+        <div class="text">
         <h4>Outcomes</h4>
         <p>The redesign demonstrated that a refined Starship configuration could achieve the desired Martian glide ratio and control stability, supporting future interplanetary reentry vehicle studies. Recommendations included further CFD validation, material testing, and integration of reaction control system effects for precise descent control.</p>
+      </div>
       </div>
     </div>
   </div>
