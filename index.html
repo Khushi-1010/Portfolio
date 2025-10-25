@@ -135,22 +135,6 @@
     @media (prefers-reduced-motion: reduce) {
       html {scroll-behavior: auto}
     }
-    .modal .content {
-  max-width: 960px;
-  width: 100%;
-  max-height: 90vh; /* limit height so we can scroll */
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal .body {
-  padding: 16px 24px;
-  overflow-y: auto;
-  max-height: calc(90vh - 70px); /* fits within modal */
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent) transparent;
-}
 
   </style>
 </head>
@@ -427,52 +411,27 @@
           <img src="Images/RedShift.JPEG" alt="RedShift Team" />
           <img src="Images/CDProcess.JPEG" alt="Conceptual Design Process" />
         </div>
+          <h4>Project Goals</h4>
+            <ul>
+              <li>Optimize lift-to-drag ratio for Mars descent and Earth return trajectories.</li>
+              <li>Ensure stability and control across multiple atmospheric regimes.</li>
+              <li>Integrate structural/thermal proposals (heat-shield, fins, strakes) without excessive mass penalty.</li>
+            </ul>
+            h4>Methodology</h4>
+              <p>Used OpenVSP to model geometry, Digital DATCOM for aerodynamic coefficients, MATLAB/Python for stability and control analysis, and parametric sweeps for strake/fin sizing.</p>
+        <div class="gallery">
+          <img src="Images/StarshipSim.JPEG" alt="OpenVSP Simulation" />
+        </div>
+          <h4>Results & Findings</h4>
+              <p>• Achieved L/D ≈ 4-5 for Mars entry; >8 for Earth reentry.<br>
+              • Stability margin ~10-12% static margin, control ratio >1.5.<br>
+              • Proposed heat-shield layout and fin/strake geometry improved payload capacity by ~X% (you’d fill in with your number).</p>
+              
+          <h4>Team & My Role</h4>
+              <p>As lead for Aero & S&C, I coordinated geometry modifications, aerodynamic analysis, control-surface sizing, and final presentation. Worked with team on thermal/structural hand-off.</p>
       </div>
     </div>
   </div>
-
-  <div class="body">
-  <h4>Overview</h4>
-  <p>
-    This project involved reverse-engineering SpaceX’s Starship for Martian
-    entry and Earth reentry. The goal was to achieve a balance between lift,
-    drag, and controllability while optimizing mass distribution.
-  </p>
-
-  <h4>Objectives</h4>
-  <ul>
-    <li>Redesign fins and strakes to improve pitch stability.</li>
-    <li>Evaluate aerodynamic coefficients for Mars and Earth atmospheres.</li>
-    <li>Develop control surface sizing via static margin analysis.</li>
-  </ul>
-
-  <h4>Methods</h4>
-  <p>
-    Used <strong>OpenVSP</strong> for geometry generation and
-    <strong>Digital DATCOM</strong> for aerodynamic coefficient prediction.
-    Simulations focused on lift-to-drag ratio (L/D) optimization under
-    different atmospheric conditions.
-  </p>
-
-  <div class="gallery">
-    <img src="Images/StarshipSim.JPEG" alt="OpenVSP Simulation" />
-    <img src="Images/SD1_Starship_7.PNG" alt="Render of Final Design" />
-  </div>
-
-  <h4>Results</h4>
-  <p>
-    Achieved L/D ≈ 4–5 for Mars and >8 for Earth reentry. Stability analysis
-    confirmed control ratio >1.5 and ~10–12% static margin, ensuring smooth
-    control during descent. Proposed thermal protection layout for reentry.
-  </p>
-
-  <h4>Team & Contributions</h4>
-  <p>
-    Led aerodynamic and S&C analyses; collaborated with team members on heat
-    shield design, CFD validation, and system-level integration.
-  </p>
-</div>
-
 
   <div class="modal" id="modal-amod" role="dialog" aria-modal="true" aria-labelledby="amod-title">
     <div class="content">
