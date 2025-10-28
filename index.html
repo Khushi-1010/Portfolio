@@ -37,7 +37,7 @@
       margin:0;
       font-family: var(--sans);
       color: var(--text);
-      background: #000 url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      background: #000000 url('https://www.transparenttextures.com/patterns/stardust.PNG') repeat;
     }
 
     img {max-width:100%; display:block}
@@ -96,11 +96,32 @@
     /* -------- Modal -------- */
     .modal {position: fixed; inset: 0; background: rgba(0,0,0,.6); display:none; align-items: center; justify-content: center; padding: 20px; z-index: 50}
     .modal.active {display:flex}
-    .modal .content {max-width: 920px; width:100%; background: var(--panel); border:1px solid color-mix(in oklab, var(--text) 14%, transparent); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden}
+    .modal .content {max-width: 960px; width:100%; max-height:90vh; background: var(--panel); border:1px solid color-mix(in oklab, var(--text) 14%, transparent); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden}
     .modal header {display:flex; align-items:center; justify-content:space-between; padding: 16px 18px; border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent)}
-    .modal .body {padding: 16px 18px}
+    .modal .body {padding: 16px 24px; overflow-y: auto;  max-height: calc(90vh - 70px);}
     .close {border:none; background:transparent; color:var(--muted); font-size:22px; cursor:pointer}
-    .gallery {display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; margin-top:10px}
+    .gallery {
+                  display: flex;
+                  gap: 16px;
+                  align-items:center;
+                  margin-top:16px;
+                  overflow-x: auto;
+                  scroll-snap-type: x mandatory;
+                }
+                
+    .gallery img {
+                  flex: 0 0 auto;
+                  scroll-snap-align: start;
+                  border-radius: 12px;
+                  max-height: 240px;
+                  max-width: 45%;
+                  border-radius: 12px;
+              }
+    .gallery-block .text {
+                    flex: 1;
+                    min-width: 250px;
+                  }
+
     .ph {background: linear-gradient(135deg, #3b1d5a, #5a189a); aspect-ratio: 16/9; border-radius: 12px; position:relative}
     .ph::after {content: "Add image here"; position:absolute; inset:0; display:grid; place-items:center; color:#ddd; font-size:14px; letter-spacing:.05em}
 
@@ -111,20 +132,6 @@
     .muted {color:var(--muted)}
     .sr-only {position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
     .hide {display:none}
-    /* Project images */
-    .thumb img { 
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover; 
-      display: block; 
-      border-radius: 16px 16px 0 0; 
-    }
-
-    .gallery img { 
-      width: 100%; 
-      border-radius: 12px; 
-      margin-bottom: 8px;
-    }
 
     @media (max-width: 900px) {
       .hero .grid, .contact {grid-template-columns: 1fr}
@@ -136,6 +143,7 @@
     @media (prefers-reduced-motion: reduce) {
       html {scroll-behavior: auto}
     }
+
   </style>
 </head>
 <body>
@@ -208,13 +216,13 @@
         <!-- SBJ -->
         <article class="project card">
           <div class="thumb" role="img" aria-label="Supersonic Business Jet">
-            <img src="images/SBPlane.JPEG" alt="Supersonic Business Jet concept" style="width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0;" />
+            <img src="Images/SBPlane.JPEG" alt="Supersonic Business Jet concept" style="width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0;" />
           </div>
           <div class="body">
             <h3>Conceptual Design of Supersonic Business Jet</h3>
             <p class="muted">Aerodynamics & aerothermodynamics lead for a Mach 1.7 SBJ concept.</p>
             <div class="tags">
-              <span class="tag">MATLAB</span><span class="tag">OpenVSP</span><span class="tag">Digital DATCOM</span>
+               <span class="tag">Aero</span><span class="tag">Controls</span><span class="tag">Thermal</span><span class="tag">MATLAB</span><span class="tag">OpenVSP</span><span class="tag">Digital DATCOM</span>
             </div>
             <div class="links">
               <button class="btn" data-modal-target="#modal-sbj">Details</button>
@@ -223,12 +231,14 @@
         </article>
         <!-- Starship -->
         <article class="project card">
-          <div class="thumb" role="img" aria-label="Martian Starship"></div>
+          <div class="thumb" role="img" aria-label="Martian Starship">
+            <img src="Images/StarshipModel.JPEG" alt="Supersonic Business Jet concept" style="width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0;" />
+          </div>
           <div class="body">
             <h3>Reverse Engineering SpaceX Martian Starship</h3>
-            <p class="muted">L/D 4–5 on Mars, >8 on Earth reentry with control margin analyses.</p>
+            <p class="muted">Performed aerodynamic and stability analysis of a Martian Starship concept, optimizing lift-to-drag and control margins.</p>
             <div class="tags">
-              <span class="tag">Aero</span><span class="tag">Controls</span><span class="tag">Thermal</span>
+              <span class="tag">Aero</span><span class="tag">Controls</span><span class="tag">Thermal</span><span class="tag">MATLAB</span><span class="tag">OpenVSP</span>
             </div>
             <div class="links">
               <button class="btn" data-modal-target="#modal-starship">Details</button>
@@ -237,15 +247,33 @@
         </article>
         <!-- A‑MOD -->
         <article class="project card">
-          <div class="thumb" role="img" aria-label="A‑MOD Racecar Aero"></div>
+          <div class="thumb" role="img" aria-label="A‑MOD Racecar Aero">
+            <img src="Images/AMOD.JPG" alt="Supersonic Business Jet concept" style="width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0;" />
+          </div>
           <div class="body">
             <h3>A‑MOD Aerodynamics Analysis</h3>
             <p class="muted">+12% downforce and −7% drag via STAR‑CCM+ sweeps.</p>
             <div class="tags">
-              <span class="tag">STAR‑CCM+</span><span class="tag">SolidWorks</span><span class="tag">RANS</span>
+              <span class="tag">STAR‑CCM+</span><span class="tag">SolidWorks</span><span class="tag">Meshing</span><span class="tag">Aero</span>
             </div>
             <div class="links">
               <button class="btn" data-modal-target="#modal-amod">Details</button>
+            </div>
+          </div>
+        </article>
+        <!-- PID Ball Balancing -->
+        <article class="project card">
+          <div class="thumb" role="img" aria-label="Mechatronics">
+            <img src="Images/AMOD.JPG" alt="Supersonic Business Jet concept" style="width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0;" />
+          </div>
+          <div class="body">
+            <h3>PID-Controlled Ball Balancing Screen</h3>
+            <p class="muted">PID Controlled ball banacing screen, with a Bluetooth module for accurate positioning of the ball.</p>
+            <div class="tags">
+              <span class="tag">UART</span><span class="tag">SolidWorks</span><span class="tag">I2C</span><span class="tag">C++</span>
+            </div>
+            <div class="links">
+              <button class="btn" data-modal-target="#modal-mechatronics">Details</button>
             </div>
           </div>
         </article>
@@ -356,9 +384,9 @@
 
     <!-- CONTACT -->
     <section id="contact" class="contact">
-      <div class="card" style="display:flex; flex-direction:column; gap:16px; align-items:flex-start">
+      <div class="card" style="padding: 20px; display:flex; flex-direction:column; gap:16px; align-items:flex-start">
         <h2 style="margin-top:0">Contact</h2>
-        <p class="muted">Want to collaborate or chat about aerospace. Send a note.</p>
+        <p class="muted" style="font-size: 20px;">Want to collaborate or chat about aerospace? Send a note.</p>
         <div style="display:flex; gap:12px; flex-wrap:wrap">
           <a class="btn primary" href="mailto:krp3505@mavs.uta.edu">Email me</a>
           <a class="btn" href="https://github.com/Khushi-1010" aria-label="GitHub">GitHub</a>
@@ -372,7 +400,6 @@
   <footer>
     <div class="container" style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap">
       <div>© <span id="year"></span> Khushi Piparava</div>
-      <div class="muted">Built with plain HTML, CSS, and JS</div>
     </div>
   </footer>
 
@@ -380,16 +407,43 @@
   <div class="modal" id="modal-sbj" role="dialog" aria-modal="true" aria-labelledby="sbj-title">
     <div class="content">
       <header>
-        <h3 id="sbj-title">Supersonic Business Jet — Project Details</h3>
+        <h3 id="sbj-title">SkyBreaker: Supersonic Business Jet — Project Details</h3>
         <button class="close" data-close>×</button>
       </header>
       <div class="body">
-        <p>Led aerodynamics and aerothermodynamics for a Mach 1.7, 14‑passenger SBJ. Built lift–drag datasets using MATLAB with Digital DATCOM and OpenVSP. Subsonic L/D ≈ 12, supersonic L/D ≈ 7.5. Honors capstone explored folding‑wingtip variable geometry and provided a multidisciplinary decision framework.</p>
+        <h4>Overview</h4>
+        <p>The SkyBreaker project focused on the conceptual and preliminary design of a Trans-Pacific Supersonic Business Jet (SSBJ) capable of nonstop flight from Los Angeles (LAX) to Tokyo (NRT) at Mach 1.7 using 100% Sustainable Aviation Fuel (SAF). The mission sought to balance speed, efficiency, environmental compliance, and comfort, all within the ICAO Chapter 14 noise standards and a maximum takeoff gross weight (TOGW) of approximately 100,000 lb (≈ 45,359 kg)</p>
+        <h4>Objectives</h4>
+            <ul>
+              <li>Develop a supersonic business jet design suitable for long-haul transoceanic routes.</li>
+              <li>Ensure compliance with environmental standards through reduced noise and full SAF operation.</li>
+              <li>Conduct mission-level and aerodynamic trade studies to optimize lift-to-drag ratio (L/D), thrust, and stability margins.</li>
+              <li>Integrate findings from aerodynamics, propulsion, structure, weights, and performance teams into a unified design solution space.</li>
+            </ul>
+        <h4>Methodology</h4>
+              <p>The team implemented a multidisciplinary conceptual design process consisting of:</p>
+             <ul> <li>Mission & Technology Trade Matrices to identify constraints and feasible design regions.</li>
+              <li>Parametric Sizing via Hypersonic Convergence (HC) equations to iterate on weight, planform area, and Mach range (1.7–2.5).</li>
+              <li>Aerodynamic database development through literature review of legacy supersonic aircraft (Concorde, Tu-144, Tu-444, Aerion AS2).</li>        
+              <li>Propulsion modeling based on the F100-PW-229 turbofan, calibrated for supersonic cruise performance.</li>
+              <li>Configuration Layout integrating internal fuel/structure volumes and external aerodynamic shaping.</li></ul>
+        <p>The iterative design converged on a configuration featuring high aerodynamic efficiency (L/D ≈ 7–8), a Mach 2.1 design point, and feasible performance across all mission phases.</p>
         <div class="gallery">
-          <img src="Images/finaliter.png" alt="SBJ concept rendering" />
-          <img src="Images/MeNPlane.jpeg" alt="3D Printed Model of the SkyBreaker SBJ" />
-          <img src="Images/Skybreaker.jpeg" alt="SkyBreaker Team" />
+          <img src="Images/MeNPlane.JPEG" alt="3D Printed Model of the SkyBreaker SBJ" />
+          <img src="Images/Skybreaker.JPEG" alt="SkyBreaker Team" />
         </div>
+        <h4>My Role</h4>h4>
+            <p>As the Aerodynamics & Aerothermodynamics Lead, and a secondary in Stability & Control, I was responsible for:</p>
+            <ul><li>Developing aerodynamic parameters (e.g., lift, drag, pitching moment coefficients) essential for the Hypersonic Convergence synthesis.</li>
+            <li>Performed S&C analyses to determine static margin, control effectiveness, and neutral point location.</li>
+            <li>Deriving realistic aerodynamic performance metrics for the SSBJ’s cruise and climb phases.</li>
+            <li>Delivering verified L/D = 7–8 values to the Synthesis and Trajectory teams for mission performance analysis.</li>
+            <li>Collaborating with stability & control, propulsion, and configuration teams to ensure consistency in external geometry and flow integration.</li></ul>
+        <h4>Outcomes</h4>
+        <p>The SkyBreaker study produced a validated conceptual design that demonstrated both technical and environmental feasibility for future supersonic business travel. The integration of your aerodynamic modeling established a robust foundation for high-speed flight efficiency, shaping the project’s final configuration and performance envelope.</p>
+      <div class="gallery">
+          <img src="Images/finaliter.PNG" alt="SBJ concept rendering" />
+      </div>
       </div>
     </div>
   </div>
@@ -401,10 +455,41 @@
         <button class="close" data-close>×</button>
       </header>
       <div class="body">
-        <p>Led aero and S&C on a Martian Starship redesign. Achieved L/D ~4–5 for Mars entry and >8 for Earth reentry. Confirmed control ratio >1.5 and ~10–12% static margin. Proposed heat‑shield, fin and strake updates to improve stability and payload.</p>
+        <h4>Overview</h4>
+        <p>This project aimed to reverse-engineer and analyze SpaceX’s Starship for Martian and Earth re-entry conditions. The study focused on achieving high aerodynamic efficiency, controllability, and thermal protection performance during hypersonic descent through rarefied Martian atmosphere and dense Earth reentry flow. The redesigned configuration achieved an estimated lift-to-drag ratio (L/D) of 4–5 on Mars and >8 during Earth reentry, ensuring a smooth, stable descent profile .</p>
         <div class="gallery">
-          <div class="ph"></div><div class="ph"></div><div class="ph"></div>
+          <img src="Images/RedShift.JPEG" alt="RedShift Team" />
+          <img src="Images/CDProcess.JPEG" alt="Conceptual Design Process" />
         </div>
+          <h4>Objectives</h4>
+            <ul>
+              <li>Model Starship geometry and reentry dynamics for both Earth and Mars conditions.</li>
+              <li>Perform aerodynamic and stability analyses to validate lift, drag, and pitching moment coefficients.</li>
+              <li>Evaluate static margin and control ratio for stability across Mach regimes.</li>
+              <li>Propose heat-shield, fin, and strake modifications to enhance control and thermal safety.</li>
+            </ul>
+            <h4>Methodology</h4>
+              <p>The team used OpenVSP for 3D modeling, MATLAB for creating an analytical model for aerodynamic coefficient prediction, and for flight performance and control margin calculations. Dynamic stability was analyzed through pitching moment derivatives and control surface sizing, while thermal considerations were informed by convective heating correlations.Analyses compared flight behavior in CO₂-rich Martian atmosphere (low Reynolds number, low density) with Earth’s high dynamic pressure regime, identifying fin and strake adjustments necessary to maintain longitudinal control.</p>
+        <div class="gallery">
+          <img src="Images/StarshipSim.JPEG" alt="OpenVSP Simulation" />
+        </div>
+          <h4>Results & Findings</h4>
+            <ul>
+              <li>Achieved L/D ≈ 4-5 for Mars entry; >8 for Earth reentry.</li>
+              <li>Stability margin ~10-12% static margin, ensuring passive stability.</li>
+              <li>control ratio >1.5, verifying adequate aerodynamic authority across reentry phases.</li>
+              <li>Strake and fin geometry adjustments reduced pitch oscillations and improved payload stability.</li>
+              <li>Proposed a layered heat shield system with improved fin thermal isolation for reentry resilience.</li>
+            </ul>
+          <h4>My Role</h4>
+              <p>As lead for Aero & S&C, I coordinated geometry modifications, aerodynamic analysis, control-surface sizing, and final presentation. Collaborated with RedShift Dynamics team members responsible for structures, thermal systems, and systems integration.</p>
+      <div class="gallery">
+          <img src="Images/SD1_Starship_7.PNG" alt="Render of Final Design" />
+      </div>
+        <div class="text">
+        <h4>Outcomes</h4>
+        <p>The redesign demonstrated that a refined Starship configuration could achieve the desired Martian glide ratio and control stability, supporting future interplanetary reentry vehicle studies. Recommendations included further CFD validation, material testing, and integration of reaction control system effects for precise descent control.</p>
+      </div>
       </div>
     </div>
   </div>
@@ -418,7 +503,22 @@
       <div class="body">
         <p>Optimized UTA Racing A‑modified car aero. 3,000 STAR‑CCM+ RANS iterations across ride‑height and wing‑angle sweeps delivered +12% downforce and −7% drag, improving balance and moving CP by ~5%.</p>
         <div class="gallery">
-          <div class="ph"></div><div class="ph"></div><div class="ph"></div>
+          <img src="Images/Racecar.JPEG" alt="Racecar engineering final presentation" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-mechatronics" role="dialog" aria-modal="true" aria-labelledby="mechatronics-title">
+    <div class="content">
+      <header>
+        <h3 id="mechatronics-title">PID-Controlled Ball Balancing Screen — Project Details</h3>
+        <button class="close" data-close>×</button>
+      </header>
+      <div class="body">
+        <p>Optimized UTA Racing A‑modified car aero. 3,000 STAR‑CCM+ RANS iterations across ride‑height and wing‑angle sweeps delivered +12% downforce and −7% drag, improving balance and moving CP by ~5%.</p>
+        <div class="gallery">
+          <img src="Images/Racecar.JPEG" alt="Racecar engineering final presentation" />
         </div>
       </div>
     </div>
