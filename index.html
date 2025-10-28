@@ -248,7 +248,7 @@
         <!-- A‑MOD -->
         <article class="project card">
           <div class="thumb" role="img" aria-label="A‑MOD Racecar Aero">
-            <img src="Images/AMOD.JPG" alt="Supersonic Business Jet concept" style="width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0;" />
+            <img src="Images/AMOD.JPG" alt="Amod Car" style="width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0;" />
           </div>
           <div class="body">
             <h3>A‑MOD Aerodynamics Analysis</h3>
@@ -264,11 +264,14 @@
         <!-- PID Ball Balancing -->
         <article class="project card">
           <div class="thumb" role="img" aria-label="Mechatronics">
-            <img src="Images/AMOD.JPG" alt="Supersonic Business Jet concept" style="width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0;" />
+            <!--<img src="Images/Mechatronics.JPG" alt="Ball Balancing platform" style="width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0;" />-->
+          <video autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0;">
+            <source src="images/Mecha.MP4" type="video/mp4">
+          </video>
           </div>
           <div class="body">
-            <h3>PID-Controlled Ball Balancing Screen</h3>
-            <p class="muted">PID Controlled ball banacing screen, with a Bluetooth module for accurate positioning of the ball.</p>
+            <h3>PID-Controlled Ball Balancing Platform</h3>
+            <p class="muted">Designed a two-axis ball-balancing system using a Raspberry Pi Pico and resistive touchscreen with a real-time PID controller in C, achieving +/-5 % positioning accuracy. Integrated I2C, UART, and Bluetooth for closed-loop feedback, telemetry, and wireless gain tuning.</p>
             <div class="tags">
               <span class="tag">UART</span><span class="tag">SolidWorks</span><span class="tag">I2C</span><span class="tag">C++</span>
             </div>
@@ -512,13 +515,40 @@
   <div class="modal" id="modal-mechatronics" role="dialog" aria-modal="true" aria-labelledby="mechatronics-title">
     <div class="content">
       <header>
-        <h3 id="mechatronics-title">PID-Controlled Ball Balancing Screen — Project Details</h3>
+        <h3 id="mechatronics-title">PID-Controlled Ball Balancing Platform — Project Details</h3>
         <button class="close" data-close>×</button>
       </header>
       <div class="body">
-        <p>Optimized UTA Racing A‑modified car aero. 3,000 STAR‑CCM+ RANS iterations across ride‑height and wing‑angle sweeps delivered +12% downforce and −7% drag, improving balance and moving CP by ~5%.</p>
+        <div class="body">
+        <h4>Overview</h4>
+        <p>Developed a two-axis ball-balancing platform capable of maintaining a steel ball's position on a resistive touchscreen using a closed-loop PID control algorithm. The system utilized a Raspberry Pi Pico microcontroller for real-time processing and two servo motors to control the platform’s tilt. The project demonstrated principles of real-time feedback, signal acquisition, and precision mechatronic actuation.</p>
+        <h4>Methodology</h4>
+        <ul>
+          <li>Implemented a PID controller in C to compute proportional, integral, and derivative corrections at a 50 Hz control rate.</li>
+          <li>Acquired X–Y position feedback via the TSC2007 I2C touchscreen controller, processed analog voltage data into calibrated pixel coordinates.</li>
+          <li>Generated PWM signals to command servo angles, compensating for positional error through dynamic tilt adjustments.</li>
+          <li>Integrated UART and Bluetooth modules for wireless telemetry, enabling real-time visualization and remote gain tuning.</li>
+          <li>Applied digital filtering to minimize sensor noise and ensure loop stability under transient disturbances.</li>
+        </ul>
+        <h4>Results</h4>
+        <ul>
+          <li>Achieved ~5% steady-state positioning accuracy under dynamic input conditions.</li>
+          <li>Maintained stable response with settling time under 1.2 s for 2 cm step changes.</li>
+          <li>Demonstrated effective PID gain optimization (Kp = 0.45, Ki = 0.07, Kd = 0.12) balancing response speed and overshoot.</li>
+          <li>Verified robustness through repeatability tests and Bluetooth-based parameter adjustments.</li>
+        </ul>
+        <h4>Key Takeaways</h4>
+        <ul>
+          <li>Gained hands-on experience in embedded control systems, including I2C, UART, and PWM protocol integration.</li>
+          <li>Learned PID tuning techniques for nonlinear systems with coupled axes and mechanical inertia.</li>
+          <li>Strengthened understanding of real-time systems programming, noise mitigation, and actuator dynamics.</li>
+          <li>Reinforced principles of system modeling, feedback control, and mechatronic system integration-essential foundations for robotics and flight control design.</li>
+        </ul>
         <div class="gallery">
-          <img src="Images/Mechatronics.JPEG" alt="Racecar engineering final presentation" />
+          <video controls style="max-height:240px; border-radius:12px; max-width:45%">
+            <source src="images/Mecha.MP4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
     </div>
