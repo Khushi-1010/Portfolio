@@ -96,7 +96,7 @@
     /* -------- Modal -------- */
     .modal {position: fixed; inset: 0; background: rgba(0,0,0,.6); display:none; align-items: center; justify-content: center; padding: 20px; z-index: 50}
     .modal.active {display:flex}
-    .modal .content {max-width: 960px; width:100%; max-height:90vh; background: var(--panel); border:1px solid color-mix(in oklab, var(--text) 14%, transparent); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden}
+    .modal .content {max-width: 960px; width:100%; max-height:90vh; background: var(--panel); border:1px solid color-mix(in oklab, var(--text) 14%, transparent); border-radius: 20px; box-shadow: var(--shadow); overflow: auto}
     .modal header {display:flex; align-items:center; justify-content:space-between; padding: 16px 18px; border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent)}
     .modal .body {padding: 16px 24px; overflow-y: auto;  max-height: calc(90vh - 70px);}
     .close {border:none; background:transparent; color:var(--muted); font-size:22px; cursor:pointer}
@@ -519,7 +519,6 @@
         <button class="close" data-close>×</button>
       </header>
       <div class="body">
-        <div class="body">
         <h4>Overview</h4>
         <p>Developed a two-axis ball-balancing platform capable of maintaining a steel ball's position on a resistive touchscreen using a closed-loop PID control algorithm. The system utilized a Raspberry Pi Pico microcontroller for real-time processing and two servo motors to control the platform’s tilt. The project demonstrated principles of real-time feedback, signal acquisition, and precision mechatronic actuation.</p>
         <h4>Methodology</h4>
