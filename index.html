@@ -459,7 +459,7 @@
       </header>
       <div class="body">
         <h4>Overview</h4>
-        <p>This project aimed to reverse-engineer and analyze SpaceX’s Starship for Martian and Earth re-entry conditions. The study focused on achieving high aerodynamic efficiency, controllability, and thermal protection performance during hypersonic descent through rarefied Martian atmosphere and dense Earth reentry flow. The redesigned configuration achieved an estimated lift-to-drag ratio (L/D) of 4–5 on Mars and >8 during Earth reentry, ensuring a smooth, stable descent profile .</p>
+        <p>This project aimed to reverse-engineer and analyze SpaceX’s Starship for Martian and Earth re-entry conditions. The study focused on achieving high aerodynamic efficiency, controllability, and thermal protection performance during hypersonic descent through rarefied Martian atmosphere and dense Earth reentry flow. The redesigned configuration achieved an estimated lift-to-drag ratio (L/D) of 4–5 on Mars and >8 during Earth reentry, ensuring a smooth, stable descent profile.</p>
         <div class="gallery">
           <img src="Images/RedShift.JPEG" alt="RedShift Team" />
           <img src="Images/CDProcess.JPEG" alt="Conceptual Design Process" />
@@ -472,7 +472,7 @@
               <li>Propose heat-shield, fin, and strake modifications to enhance control and thermal safety.</li>
             </ul>
             <h4>Methodology</h4>
-              <p>The team used OpenVSP for 3D modeling, MATLAB for creating an analytical model for aerodynamic coefficient prediction, and for flight performance and control margin calculations. Dynamic stability was analyzed through pitching moment derivatives and control surface sizing, while thermal considerations were informed by convective heating correlations.Analyses compared flight behavior in CO₂-rich Martian atmosphere (low Reynolds number, low density) with Earth’s high dynamic pressure regime, identifying fin and strake adjustments necessary to maintain longitudinal control.</p>
+              <p>The team used OpenVSP for 3D modeling, MATLAB for creating an analytical model for aerodynamic coefficient prediction, and for flight performance and control margin calculations. Dynamic stability was analyzed through pitching moment derivatives and control surface sizing, while thermal considerations were informed by convective heating correlations. Analyses compared flight behavior in CO₂-rich Martian atmosphere (low Reynolds number, low density) with Earth’s high dynamic pressure regime, identifying fin and strake adjustments necessary to maintain longitudinal control.</p>
         <div class="gallery">
           <img src="Images/StarshipSim.JPEG" alt="OpenVSP Simulation" />
         </div>
@@ -500,13 +500,50 @@
   <div class="modal" id="modal-amod" role="dialog" aria-modal="true" aria-labelledby="amod-title">
     <div class="content">
       <header>
-        <h3 id="amod-title">A‑MOD Aerodynamics Analysis — Project Details</h3>
+        <h3 id="amod-title">Formula SAE Aerodynamics Analysis — Project Details</h3>
         <button class="close" data-close>×</button>
       </header>
       <div class="body">
-        <p>Optimized UTA Racing A‑modified car aero. 3,000 STAR‑CCM+ RANS iterations across ride‑height and wing‑angle sweeps delivered +12% downforce and −7% drag, improving balance and moving CP by ~5%.</p>
+        <h4>Overview</h4>
+        <p>The A-MOD project focused on redesigning the aerodynamic package of UTA Racing’s A-Modified competition car. Using CFD-based trade studies in STAR-CCM+, the team evaluated how ride height, wing angle, and aero-component interactions affected downforce, drag, and overall balance. The goal was to improve cornering grip and stability without sacrificing straight-line efficiency.</p>
+        <h4>Objectives</h4>
+            <ul>
+              <li>Increase total downforce while minimizing associated drag penalties.</li>
+              <li>Shift the center of pressure rearward for improved high-speed stability.</li>
+              <li>Develop a validated workflow for repeatable aerodynamic tuning.</li>
+              <li>Provide actionable design recommendations for the vehicle’s competition setup.</li>
+            </ul>
         <div class="gallery">
           <img src="Images/Starccm.png" alt="Racecar Simulation" />
+        </div>
+        <h4>Methodology</h4>
+            <ul>
+              <li>Modeled the full vehicle geometry and simplified underbody for CFD efficiency.</li>
+              <li>Ran 3000+ RANS simulations across parametric sweeps of: ride height, front and rear wing angles of attack, and diffuser performance interactions.</li>
+              <li>Evaluated lift coefficient, drag coefficient, center-of-pressure location, balance percentage, and stability trends and compared the configurations to baseline car to quantify improvements.</li>
+            </ul>
+          <h4>Results</h4>
+            <ul>
+              <li>Angle of attack of around 6° for the rear wing provided favorable balance between downforce and drag. This configuration significantly increases rear load percentage, maintaining control and maximizing performance on track.</li>
+              <li>Front wing's angle of attack can decrease drag but must be carefully managed to avoid shifting the center of pressure too far rearward which can impact the car's handling balance negatively.</li>
+              <li>The best combined performance was found with front wing at 0° angle of attack and the rear wing at 6°. This configuration increased downforce by about 12% and reduced drag by 7%.</li>
+              <li>These gains translate to better cornering grip, more predictable handling, and improved lap-time potential.</li>
+            </ul>
+          <h4>My Role</h4>
+            <ul>
+              <li>Built and cleaned CAD assemblies of the vehicle in SolidWorks.</li>
+              <li>Set up meshing, physics models, and boundary conditions in STAR-CCM+.</li>
+              <li>Designed and executed parametric CFD sweeps.</li>
+              <li>Analyzed trends and presented recommendations to the race car team at UTA.</li>
+              <li>Documented procedure so future teams can iterate on the aero package.</li>
+            </ul>
+          <h4>Key Takeaways</h4>
+            <ul>
+              <li>Learned how CFD trade studies influence real racing performance.</li>
+              <li>Developed comfort tuning aerodynamic systems using engineering judgment.</li>
+              <li>Strengthened skills in STAR-CCM+, SolidWorks, meshing strategy, and aero data interpretation.</li>
+            </ul>
+            <div class="gallery">
           <img src="Images/Racecar.JPEG" alt="Racecar engineering final presentation" />
         </div>
       </div>
