@@ -99,6 +99,13 @@
     .modal .content {max-width: 960px; width:100%; max-height:90vh; background: var(--panel); border:1px solid color-mix(in oklab, var(--text) 14%, transparent); border-radius: 20px; box-shadow: var(--shadow); overflow: auto}
     .modal header {display:flex; align-items:center; justify-content:space-between; padding: 16px 18px; border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent)}
     .modal .body {padding: 16px 24px; overflow-y: auto;  max-height: calc(90vh - 70px);}
+    /* Make images clickable */
+    .modal .body img,
+    .modal .body video {cursor: zoom-in;}
+    /* Image-only lightbox */
+    #image-lightbox {background: rgba(0,0,0,0.85);}
+    #image-lightbox .content{display:flex; align-items: center; justify-content: center; position: relative;}
+    #image-lightbox img {cursor: zoom-out;display: block; margin: auto; max-width: 90vw; max-height: 90vh;}
     .close {border:none; background:transparent; color:var(--muted); font-size:22px; cursor:pointer}
     .gallery {
                   display: flex;
@@ -143,7 +150,6 @@
     @media (prefers-reduced-motion: reduce) {
       html {scroll-behavior: auto}
     }
-
   </style>
 </head>
 <body>
@@ -170,7 +176,7 @@
     <section class="hero" id="top">
       <div class="grid">
         <div>
-          <span class="pill">Aerospace Engineering @ UTA</span>
+          <span class="pill">B.S. Aerospace Engineering (Honors), minor in MechE @ UTA</span>
           <h1 class="h1">Hi, I am <span style="color:var(--accent)">Khushi Piparava</span>.</h1>
           <p class="lead">Research experience in RDE aerospike nozzles and building simulation and test tooling. Interested in CFD, ML for aerospace applications, and multidisciplinary design and optimization.</p>
           <div class="actions">
@@ -264,19 +270,48 @@
         <!-- PID Ball Balancing -->
         <article class="project card">
           <div class="thumb" role="img" aria-label="Mechatronics">
-            <!--<img src="Images/Mechatronics.JPG" alt="Ball Balancing platform" style="width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0;" />-->
-          <video autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0;">
+            <img src="Images/Mechatronics.JPG" alt="Ball Balancing platform" style="width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0;">
+          <!--video autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0;">
             <source src="images/Mecha.MP4" type="video/mp4">
-          </video>
+          </video-->
           </div>
           <div class="body">
             <h3>PID-Controlled Ball Balancing Platform</h3>
-            <p class="muted">Designed a two-axis ball-balancing system using a Raspberry Pi Pico and resistive touchscreen with a real-time PID controller in C, achieving +/-5 % positioning accuracy. Integrated I2C, UART, and Bluetooth for closed-loop feedback, telemetry, and wireless gain tuning.</p>
+            <p class="muted">Designed a two-axis ball-balancing system using a Raspberry Pi Pico and resistive touchscreen with a real-time PID controller in C++</p>
             <div class="tags">
-              <span class="tag">UART</span><span class="tag">SolidWorks</span><span class="tag">I2C</span><span class="tag">C++</span>
+              <span class="tag">UART</span>
+              <span class="tag">SolidWorks</span>
+              <span class="tag">I2C</span>
+              <span class="tag">C++</span>
+              <span class="tag">3D Printing</span>
             </div>
             <div class="links">
               <button class="btn" data-modal-target="#modal-mechatronics">Details</button>
+            </div>
+          </div>
+        </article>
+        <!-- NASA L'SPACE -->
+        <article class="project card">
+          <div class="thumb" role="img" aria-label="NASA L'SPACE Mission Concept Academy">
+            <img src="Images/Rover-2.png" alt="NASA L'SPACE Mission Concept Academy Certificate"
+                style="width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0;" />
+          </div>
+          <div class="body">
+            <h3>NASA L’SPACE Mission Concept Academy</h3>
+            <p class="muted">
+              NASA workforce development program focused on end-to-end mission concept design
+              through formal NASA review cycles.
+            </p>
+            <div class="tags">
+              <span class="tag">Systems</span>
+              <span class="tag">Mission Design</span>
+              <span class="tag">Risk</span>
+              <span class="tag">Siemens NX</span>
+              <span class="tag">Heat Transfer</span>
+              <span class="tag">Project Management</span>
+            </div>
+            <div class="links">
+              <button class="btn" data-modal-target="#modal-lspace">Details</button>
             </div>
           </div>
         </article>
@@ -310,6 +345,16 @@
             <li>Expanded Stride Python test coverage across major CAD integrations.</li>
           </ul>
         </article>
+        <article class="job card" style="padding:14px">
+          <h3>Academic Success Program Tutor · UTA Department of Student Success</h3>
+          <div class="meta">Aug 2022 – May 2024 · Arlington, TX</div>
+          <ul>
+            <li>Delivered drop-in and virtual tutoring to 30+ STEM students, improving course performance and retention.</li>
+            <li>Specialized in calculus, physics, statics, chemistry, and introductory engineering design.</li>
+            <li>Created supplemental study resources and tailored learning strategies that boosted exam readiness and confidence.</li>
+          </ul>
+        </article>
+
       </div>
     </section>
 
@@ -322,6 +367,26 @@
           </div>
         </div>
         <div class="grid-2">
+            <div class="card" style="padding:14px">
+                <h3 style="margin-top:0">
+                  Performance of Adaptive Wingtips on a Tailless Supersonic Business Jet
+                </h3>
+                <p class="muted">UTA Honors College · Fall 2025 Honors Capstone</p>
+                <p>
+                  Honors thesis studying adaptive folding wingtips on a tailless supersonic
+                  business jet. Used MATLAB-based supersonic and compression-lift models to
+                  evaluate affects of wingtip droop angle.
+                </p>
+                <a
+                  class="btn primary"
+                  style="margin-top:8px; box-shadow: 0 0 14px var(--accent)"
+                  href="https://mavmatrix.uta.edu/honors_fall2025/1/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Thesis →
+                </a>
+              </div>
             <div class="card" style="padding:14px">
               <h3 style="margin-top:0">Computational Modeling and Dynamic Analysis of Transient Flowfields in Aerospike Nozzles</h3>
               <p class="muted">AIAA Region IV Student Conferences · 2025</p>
@@ -349,11 +414,18 @@
         <div class="card" style="padding:14px">
           <h3>University of Texas at Arlington</h3>
           <div class="meta">Honors B.S. Aerospace Engineering, Minor in Mechanical · GPA 3.4/4.0 · Aug 2021 – Dec 2025</div>
-          <p class="muted">Organizations: AIAA, Honors College Council, SASE. Certification: Machine Learning Specialization (Stanford & DeepLearning.AI).</p>
+          <p class="muted">Organizations: AIAA, Honors College Council, SASE, ACM.</p>
+          <p class="muted">Certification:
+          <a class="btn primary" style="margin-top:8px; box-shadow: 0 0 14px var(--accent)" href="https://coursera.org/share/b05512ada095633d1b816341be38ded2" target="_blank" rel="noopener" aria-label="Open Certificate">Machine Learning Specialization (Stanford & DeepLearning.AI)</a> </p>
         </div>
         <div class="card" style="padding:14px">
           <h3>Awards</h3>
-          <p class="muted">Outstanding Second Year Leader, inSTEM Scholar, Maverick Academic Scholar, Outstanding AIAA Student Award, Freshman Honor Roll.</p>
+          <p class="muted"> inSTEM Scholar, NSTMF (2021-2025)</p>
+          <p class="muted"> Maverick Academic Scholar, UTA (2021-2025)</p>
+          <p class="muted">2nd Place, AIAA Region IV Student Conference (2024)</p>
+          <p class="muted"> Outstanding AIAA Student Award, UTA (2024)</p>
+          <p class="muted">Outstanding Second Year Leader, UTA (2022)</p>
+          <p class="muted"> Freshman Honor Roll, UTA (2022)</p>
         </div>
       </div>
     </section>
@@ -368,12 +440,12 @@
       </div>
       <div class="skills">
         <span class="skill">MATLAB</span>
+        <span class="skill">Simulink</span>
         <span class="skill">Python</span>
-        <span class="skill">C</span>
+        <span class="skill">C/C++</span>
         <span class="skill">SQL</span>
         <span class="skill">HTML/CSS</span>
-        <span class="skill">ANSYS Fluent</span>
-        <span class="skill">SpaceClaim</span>
+        <span class="skill">Ansys (Mechanical, Fluent, SpaceClaim, Discovery)</span>
         <span class="skill">STAR‑CCM+</span>
         <span class="skill">SolidWorks</span>
         <span class="skill">Siemens NX</span>
@@ -567,6 +639,9 @@
           <li>Integrated UART and Bluetooth modules for wireless telemetry, enabling real-time visualization and remote gain tuning.</li>
           <li>Applied digital filtering to minimize sensor noise and ensure loop stability under transient disturbances.</li>
         </ul>
+        <div class="gallery">
+          <img src="Images/Mecha_prototype.JPEG" alt="Prototype" />
+        </div>
         <h4>Results</h4>
         <ul>
           <li>Achieved ~5% steady-state positioning accuracy under dynamic input conditions.</li>
@@ -588,6 +663,85 @@
           </video>
         </div>
       </div>
+    </div>
+  </div>
+  <!-- NASA L'SPACE MODAL -->
+  <div class="modal" id="modal-lspace" role="dialog" aria-modal="true" aria-labelledby="lspace-title">
+    <div class="content">
+      <header>
+        <h3 id="lspace-title">NASA L’SPACE Mission Concept Academy — Project Details</h3>
+        <button class="close" data-close>×</button>
+      </header>
+
+      <div class="body">
+        <h4>Overview</h4>
+        <p>
+          NASA’s L’SPACE Mission Concept Academy is a competitive workforce development program designed
+          to train students in the engineering practices used on real NASA flight missions.
+          Over a 12-week period, our multidisciplinary team developed a complete space mission concept
+          following NASA’s formal systems engineering lifecycle, culminating in a Preliminary Design Review (PDR).
+        </p>
+
+        <h4>Goals</h4>
+        <ul>
+          <li>Design a feasible mission aligned with defined science and exploration objectives.</li>
+          <li>Apply NASA-style systems engineering, requirements development, and verification planning.</li>
+          <li>Identify technical risks and propose realistic mitigation strategies.</li>
+          <li>Deliver professional review packages evaluated by NASA-affiliated mentors.</li>
+        </ul>
+        <div class="gallery">
+          <img src="Images/MCATeam.png" alt="MCA Team Summer 2023" />
+        </div>
+        <h4>Methodology</h4>
+        <ul>
+          <li>Developed mission architecture and performed trade studies across propulsion, structures, and thermal subsystems.</li>
+          <li>Generated system-level requirements and verification matrices.</li>
+          <li>Created and maintained a risk register addressing technical and programmatic risks.</li>
+          <li>Used Siemens NX for mechanical modeling and subsystem layout.</li>
+          <li>Completed structured reviews: Mission Concept Review (MCR), System Requirements Review (SRR),
+              Mission Definition Review (MDR), and Preliminary Design Review (PDR).</li>
+        </ul>
+
+        <h4>My Role</h4>
+        <ul>
+          <li>Served as the Mechanical Engineer responsible for end-to-end rover CAD, including subsystem layout,
+              structural interfaces, and configuration control using Siemens NX.</li>
+          <li>Produced engineering drawings and mechanical documentation for inclusion in the Preliminary Design Review (PDR)
+              package.</li>
+          <li>Acted as Secondary Scientist, contributing to science payload definition and functional trade studies.</li>
+          <li>Developed and drafted science payload requirements, ensuring traceability to mission-level objectives and
+              compliance with system constraints.</li>
+          <li>Collaborated closely with systems, thermal, and mission assurance engineers to align mechanical design,
+              payload integration, and verification planning.</li>
+        </ul>
+        <div class="gallery">
+          <img src="Images/Rover.png" alt="Rover" />
+          <img src="Images/Rover-2.png" alt="Rover" />
+        </div>
+        <h4>Outcomes</h4>
+        <ul>
+          <li>Successfully completed a NASA-style Preliminary Design Review.</li>
+          <li>Earned all L’SPACE skill badges, including systems engineering, risk management,
+              heat transfer, Siemens NX CAD, project management, and teaming.</li>
+          <li>Gained hands-on experience with NASA mission formulation and review culture.</li>
+        </ul>
+
+        <div class="gallery">
+          <img src="Images/MCA2023.png" alt="NASA L'SPACE Certificate of Completion" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Image Lightbox -->
+  <div class="modal" id="image-lightbox" aria-hidden="true">
+    <div class="content" style="width:90vw; height:90vh; background:transparent; border:none; box-shadow:none">
+      <button class="close" data-close style="position:absolute; top:10px; right:16px; font-size:28px">×</button>
+      <img id="lightbox-img" alt="Enlarged view" style="max-width:100%; max-height:90vh; border-radius:12px;">
     </div>
   </div>
 
@@ -630,5 +784,35 @@
     document.querySelectorAll('[data-close]').forEach(btn=> btn.addEventListener('click', ()=> closeModal(btn)))
     document.querySelectorAll('.modal').forEach(m=> m.addEventListener('click', (e)=>{ if(e.target===m) { m.classList.remove('active'); document.body.style.overflow=''} }))
   </script>
+
+  <script>
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    document.querySelectorAll('.modal .body img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Close lightbox
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.classList.contains('close')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
 </body>
 </html>
