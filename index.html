@@ -8,36 +8,51 @@
   <meta property="og:title" content="Khushi Piparava — Portfolio" />
   <meta property="og:description" content="Aerospace engineering student. Projects, experience, and publications." />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#9d4edd" />
+  <meta name="theme-color" content="#016764" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
+    @font-face {
+      font-family: "Advercase";
+      src: url("fonts/Advercase-Regular.woff2") format("woff2"),
+           url("fonts/Advercase-Regular.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Advercase";
+      src: url("fonts/Advercase-Bold.woff2") format("woff2"),
+           url("fonts/Advercase-Bold.woff") format("woff");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
     /* -------- Base + Theme -------- */
     :root {
-      --bg: #0b1220;
-      --panel: rgba(15, 23, 42, 0.95);
-      --text: #e5e7eb;
-      --muted: #94a3b8;
-      --accent: #9d4edd; /* deep purple */
-      --ring: #c77dff;
-      --shadow: 0 10px 30px rgba(2, 6, 23, 0.5);
+      --bg: #001e1e;
+      --panel: rgba(1, 26, 25, 0.9);
+      --text: #f2fbfa;
+      --muted: #9dd0cc;
+      --accent: #016764;
+      --ring: #0e9594;
+      --shadow: 0 14px 34px rgba(0, 16, 16, 0.45);
       --radius: 16px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-    }
-    .light {
-      --bg: #f8fafc;
-      --panel: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --accent: #0ea5e9;
-      --ring: #0284c7;
-      --shadow: 0 10px 25px rgba(2, 6, 23, 0.08);
+      --sans: "Lora", Georgia, "Times New Roman", serif;
+      --display: "Advercase", "Times New Roman", Georgia, serif;
     }
     html {scroll-behavior: smooth}
     body {
       margin:0;
       font-family: var(--sans);
+      font-weight: 400;
       color: var(--text);
-      background: #000000 url('images/stardust.png') repeat;
+      background:
+        radial-gradient(circle at top right, rgba(9, 40, 40, 0.28), transparent 26%),
+        radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0), transparent 30%),
+        #000000 url('images/stardust.png') repeat;
     }
 
     img {max-width:100%; display:block}
@@ -47,36 +62,48 @@
     /* -------- Top Nav -------- */
     .nav {position: sticky; top: 0; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--bg) 85%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--text) 10%, transparent); z-index: 10}
     .nav .inner {display:flex; align-items:center; justify-content:space-between; height:64px}
-    .nav a.brand {font-weight:700; letter-spacing:.2px; color:var(--text)}
+    .nav a.brand {font-family:var(--display); font-weight:400; letter-spacing:.2px; color:var(--text)}
     .nav ul {display:flex; gap:18px; list-style:none; margin:0; padding:0}
     .nav ul a {color:var(--muted)}
-    .nav .toggle {border:1px solid color-mix(in oklab, var(--text) 16%, transparent); background: var(--panel); color:var(--text); border-radius: 999px; padding:8px 12px; cursor:pointer}
 
     /* -------- Hero -------- */
     .hero {padding: 80px 0 40px}
     .hero .grid {display:grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: center}
     .pill {display:inline-flex; align-items:center; gap:8px; border:1px solid color-mix(in oklab, var(--text) 16%, transparent); border-radius:999px; padding:6px 10px; font-size:12px; color:var(--muted)}
-    .h1 {font-size: clamp(36px, 5vw, 56px); line-height:1.05; margin:10px 0 12px}
-    .lead {color:var(--muted); font-size: 18px}
+    .h1 {font-family:var(--display); font-size: clamp(36px, 5vw, 56px); font-weight:700; line-height:1.05; margin:10px 0 12px}
+    .hero-name {
+      color: var(--accent);
+    }
+    .typing-cursor {
+      display: inline-block;
+      margin-left: 0.04em;
+      color: var(--accent);
+      animation: blink 0.9s steps(1) infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+    .lead {color:var(--muted); font-size: 18px; line-height: 1.6}
     .actions {display:flex; gap:12px; margin-top:22px}
-    .btn {display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius: 12px; border:1px solid color-mix(in oklab, var(--text) 16%, transparent); background: var(--panel); color:var(--text); box-shadow: var(--shadow)}
-    .btn.primary {border-color: transparent; background: linear-gradient(135deg, var(--accent), color-mix(in oklab, var(--accent) 60%, white)); color:#00131b}
+    .btn {display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius: 12px; border:1px solid color-mix(in oklab, var(--text) 16%, transparent); background: var(--panel); color:var(--text); box-shadow: var(--shadow); font-family:var(--display); font-weight:700}
+    .btn.primary {border-color: transparent; background: linear-gradient(135deg, #0e9594, #016764 58%, #014848); color:#f4fffe}
     .btn:hover { box-shadow: 0 0 12px var(--accent) }
     .card {background: var(--panel); border:1px solid color-mix(in oklab, var(--text) 12%, transparent); border-radius: var(--radius); box-shadow: var(--shadow)}
 
     /* -------- Sections -------- */
     section {padding:64px 0}
     .section-head {display:flex; align-items:end; justify-content:space-between; margin-bottom:16px}
-    .eyebrow {text-transform: uppercase; letter-spacing: .16em; font-size: 12px; color: var(--muted)}
-    h2 {font-size:28px; margin:6px 0 4px}
+    .eyebrow {font-family:var(--display); font-weight:400; text-transform: uppercase; letter-spacing: .16em; font-size: 12px; color: var(--muted)}
+    h2 {font-family:var(--display); font-size:28px; font-weight:400; margin:6px 0 4px}
     .grid-3 {display:grid; grid-template-columns: repeat(3, 1fr); gap:16px}
     .grid-2 {display:grid; grid-template-columns: repeat(2, 1fr); gap:16px}
 
     /* -------- Projects -------- */
     .project {display:flex; flex-direction:column; overflow:hidden}
-    .project .thumb {aspect-ratio: 16/9; background: linear-gradient(135deg, #7b2cbf, #9d4edd, #c77dff); position:relative}
+    .project .thumb {aspect-ratio: 16/9; background: linear-gradient(135deg, #00312f, #014848, #016764); position:relative}
     .project .thumb::after {content:""; position:absolute; inset:0; background: radial-gradient(400px 160px at 60% 20%, rgba(255,255,255,.32), transparent 40%)}
     .project .body {padding:14px}
+    .project .body p {line-height:1.55}
     .tags {display:flex; flex-wrap:wrap; gap:6px; margin:10px 0}
     .tag {font: 12px/1 var(--mono); border:1px solid color-mix(in oklab, var(--text) 18%, transparent); color:var(--muted); padding:4px 6px; border-radius:8px}
     .project .links {display:flex; gap:8px; margin-top:8px}
@@ -86,7 +113,10 @@
     .timeline::before {content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background: color-mix(in oklab, var(--text) 16%, transparent)}
     .job {position:relative; margin-bottom:18px}
     .job::before {content:""; position:absolute; left:-14px; top:6px; width:8px; height:8px; border-radius:999px; background: var(--accent); box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 40%, transparent)}
-    .job h3 {margin:0; font-size:18px}
+    .job h3 {font-family:var(--display); margin:0; font-size:18px; font-weight:400}
+    h3, h4 {font-family:var(--display)}
+    h3 {font-weight:400}
+    h4 {font-weight:400}
     .job .meta {color:var(--muted); font-size:14px}
 
     /* -------- Skills -------- */
@@ -129,14 +159,20 @@
                     min-width: 250px;
                   }
 
-    .ph {background: linear-gradient(135deg, #3b1d5a, #5a189a); aspect-ratio: 16/9; border-radius: 12px; position:relative}
+    .ph {background: linear-gradient(135deg, #001e1e, #00312f, #005958); aspect-ratio: 16/9; border-radius: 12px; position:relative}
     .ph::after {content: "Add image here"; position:absolute; inset:0; display:grid; place-items:center; color:#ddd; font-size:14px; letter-spacing:.05em}
 
     /* -------- Footer -------- */
     footer {padding:28px 0; color:var(--muted); font-size:14px}
 
     /* -------- Utilities -------- */
-    .muted {color:var(--muted)}
+    .muted {color:var(--muted); line-height:1.6}
+    .modal .body p,
+    .modal .body li,
+    .job li,
+    footer {
+      line-height: 1.6;
+    }
     .sr-only {position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
     .hide {display:none}
 
@@ -167,7 +203,6 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <button id="themeToggle" class="toggle" aria-label="Toggle theme">☀︎</button>
     </div>
   </header>
 
@@ -177,7 +212,9 @@
       <div class="grid">
         <div>
           <span class="pill">B.S. Aerospace Engineering (Honors), minor in MechE @ UTA</span>
-          <h1 class="h1">Hi, I am <span style="color:var(--accent)">Khushi Piparava</span>.</h1>
+          <h1 class="h1" aria-label="Hi, I am Khushi Piparava.">
+            Hi, I am <span id="heroTypedName" class="hero-name" data-text="Khushi Piparava.">Khushi Piparava.</span><span id="heroTypingCursor" class="typing-cursor" aria-hidden="true">|</span>
+          </h1>
           <p class="lead">Aerospace + mechanical engineer interested in CAD, CFD, and thermal/heat-transfer analysis. I enjoy simulation-driven design iteration and building MATLAB/Python tools for fast engineering trade studies.</p>
           <div class="actions">
             <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">View Resume</a>
@@ -355,8 +392,25 @@
       </div>
       <div class="timeline">
         <article class="job card" style="padding:14px">
+          <h3>Research Assistant &middot; Aerodynamics Research Center</h3>
+          <div class="meta">Aug 2025 &ndash; Present &middot; Arlington, TX</div>
+          <ul>
+             <li>Developing data augmentation and Gaussian process regression surrogates for CH4 pyrolysis and H2 yield prediction.</li>
+            <li>Building MATLAB/Python ML workflows using jittering, Mixup, and GPR for condition-aware interpolation.</li>
+            <li>Supporting data-driven combustion modeling with physically consistent surrogate prediction and validation.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Machine Learning</span>
+            <span class="tag">GPR</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">Python</span>
+            <span class="tag">Combustion</span>
+            <span class="tag">Surrogate Modeling</span>
+          </div>
+        </article>
+        <article class="job card" style="padding:14px">
           <h3>Undergraduate Research Assistant · Aerodynamics Research Center</h3>
-          <div class="meta">Aug 2023 – Present · Arlington, TX</div>
+          <div class="meta">Aug 2023 – Aug 2025 · Arlington, TX</div>
           <ul>
             <li>NASA M‑STAR RDE research on aerospike nozzles using Fluent, ML, POD/DMD.</li>
             <li>Reduced reconstruction error below 1% by extracting dominant flow modes.</li>
@@ -468,6 +522,7 @@
           <p class="muted">Organizations: AIAA, Honors College Council, SASE, ACM.</p>
           <p class="muted">Certification:
           <a class="btn primary" style="margin-top:8px; box-shadow: 0 0 14px var(--accent)" href="https://coursera.org/share/b05512ada095633d1b816341be38ded2" target="_blank" rel="noopener" aria-label="Open Certificate">Machine Learning Specialization (Stanford & DeepLearning.AI)</a> </p>
+          <a class="btn primary" style="margin-top:8px; box-shadow: 0 0 14px var(--accent)" href="https://drive.google.com/file/d/16nWO7kLV0MwGllluTMrs8FG_eMuDtjJi/view?usp=sharing" target="_blank" rel="noopener" aria-label="Open Certificate">Test Foundations for Flight Test (AIAA)</a> </p>
         </div>
         <div class="card" style="padding:14px">
           <h3>Awards</h3>
@@ -871,18 +926,36 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Theme persistence
-    const toggle = document.getElementById('themeToggle');
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light') document.body.classList.add('light');
-    toggle.textContent = document.body.classList.contains('light') ? '☾' : '☀︎';
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      const isLight = document.body.classList.contains('light');
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-      toggle.textContent = isLight ? '☾' : '☀︎';
-    });
+    // Hero typing animation
+    const heroTypedName = document.getElementById('heroTypedName');
+    const heroTypingCursor = document.getElementById('heroTypingCursor');
+    if (heroTypedName && heroTypingCursor) {
+      const fullName = heroTypedName.dataset.text || heroTypedName.textContent;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+      if (prefersReducedMotion) {
+        heroTypedName.textContent = fullName;
+        heroTypingCursor.style.display = 'none';
+      } else {
+        heroTypedName.textContent = '';
+        let index = 0;
+
+        const typeName = () => {
+          heroTypedName.textContent = fullName.slice(0, index);
+          index += 1;
+
+          if (index <= fullName.length) {
+            window.setTimeout(typeName, 95);
+          } else {
+            window.setTimeout(() => {
+              heroTypingCursor.style.display = 'none';
+            }, 900);
+          }
+        };
+
+        window.setTimeout(typeName, 350);
+      }
+    }
     // Simple reveal on scroll
     const reveal = new IntersectionObserver((entries) => {
       for (const e of entries) {
@@ -938,3 +1011,5 @@
 
 </body>
 </html>
+
+
